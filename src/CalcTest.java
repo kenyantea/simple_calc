@@ -9,6 +9,7 @@ public class CalcTest {
         testParentheses();
         testComplexExpression();
         testDivisionByZero();
+        testInvalidBrackets();
         testInvalidExpression();
         testEmptyInput();
     }
@@ -97,16 +98,25 @@ public class CalcTest {
             Calc.evaluate("5 / 0");
             System.out.println("testDivisionByZero failed: exception not thrown.");
         } catch (Exception e) {
-            System.out.println("testDivisionByZero passed with expected exception: " + e.getMessage());
+            System.out.println("testDivisionByZero passed, exception thrown: " + e.getMessage());
+        }
+    }
+
+    private static void testInvalidBrackets() {
+        try {
+            Calc.evaluate("2 + (3 * (4 - 1");
+            System.out.println("testInvalidBrackets failed: exception not thrown.");
+        } catch (Exception e) {
+            System.out.println("testInvalidBrackets passed, exception thrown: " + e.getMessage());
         }
     }
 
     private static void testInvalidExpression() {
         try {
-            Calc.evaluate("2 + (3 * (4 - 1");
+            Calc.evaluate("2 + (3 * (4 - a))");
             System.out.println("testInvalidExpression failed: exception not thrown.");
         } catch (Exception e) {
-            System.out.println("testInvalidExpression passed with expected exception: " + e.getMessage());
+            System.out.println("testInvalidExpression passed, exception thrown: " + e.getMessage());
         }
     }
 
@@ -115,7 +125,7 @@ public class CalcTest {
             Calc.evaluate("");
             System.out.println("testEmptyInput failed: exception not thrown.");
         } catch (Exception e) {
-            System.out.println("testEmptyInput passed with expected exception: " + e.getMessage());
+            System.out.println("testEmptyInput passed, exception thrown: " + e.getMessage());
         }
     }
 }

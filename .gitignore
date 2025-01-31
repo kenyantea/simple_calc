@@ -31,4 +31,4 @@ bin/
 target/
 calc.iml
 src/*.class
-.idea/
+.idea
